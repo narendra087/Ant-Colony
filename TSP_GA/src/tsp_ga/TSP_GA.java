@@ -19,8 +19,9 @@ package tsp_ga;
 public class TSP_GA {
 
     public static void main(String[] args) {
-        String fileName = "D:\\ITS\\SI\\sem7\\OKH\\FP\\datasets\\big2.csv";
-        //untuk data bisa small1, small2, medium1, medium2, big1, big2
+        long start = System.currentTimeMillis();
+        String fileName = "D:\\ITS\\SI\\sem7\\OKH\\FP\\datasets\\hiddeninstance1.csv";
+        //untuk data bisa small1, small2, medium1, medium2, big1, big2, hiddeninstance1, hiddeninstance2
         
         File file = new File(fileName); // TODO: read about File Names
         try {
@@ -35,7 +36,7 @@ public class TSP_GA {
                 String array1[]= b.split(",");
                 
 
-                a[index]=new City(Integer.parseInt(array1[0]),Integer.parseInt(array1[1]));
+                a[index]=new City(index, Integer.parseInt(array1[0]),Integer.parseInt(array1[1]));
                 TourManager.addCity(a[index]);
                 index++;
             /*    String data = inputStream.next();
@@ -93,12 +94,12 @@ public class TSP_GA {
         */
        
         // Initialize population
-        Population pop = new Population(150, true);
+        Population pop = new Population(50, true);
         System.out.println("Initial distance: " + pop.getFittest().getDistance());
 
         // Evolve population for 100 generations
         pop = GA.evolvePopulation(pop);
-        int Generation = 99;
+        int Generation = 50;
         for (int i = 0; i < Generation; i++) {
             pop = GA.evolvePopulation(pop);
         }
@@ -108,5 +109,8 @@ public class TSP_GA {
         System.out.println("Final distance: " + pop.getFittest().getDistance());
         System.out.println("Solution:");
         System.out.println(pop.getFittest());
+        long end = System.currentTimeMillis();
+        long time = end-start;
+        System.out.println("Running Time: " + time + " Milisecond");
     }
 }

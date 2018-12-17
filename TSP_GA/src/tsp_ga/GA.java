@@ -13,7 +13,7 @@ public class GA {
 
     /* GA parameters */
     private static final double mutationRate = 0.015;
-    private static final int tournamentSize = 90;
+    private static final int tournamentSize = 35;
     private static final boolean elitism = true;
 
     // Evolves a population over one generation

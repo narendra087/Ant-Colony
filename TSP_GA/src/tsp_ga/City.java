@@ -12,6 +12,7 @@ package tsp_ga;
 public class City {
     int x;
     int y;
+    int name;
     
     // Constructs a randomly placed city
     public City(){
@@ -20,9 +21,15 @@ public class City {
     }
     
     // Constructs a city at chosen x, y location
-    public City(int x, int y){
+    public City(int name, int x, int y){
+        this.name = name;
         this.x = x;
         this.y = y;
+    }
+    
+    // Gets city's name coordinate
+    public int getName(){
+        return this.name;
     }
     
     // Gets city's x coordinate
@@ -46,6 +53,6 @@ public class City {
     
     @Override
     public String toString(){
-        return getX()+", "+getY();
+        return " " + getName();
     }
 }
